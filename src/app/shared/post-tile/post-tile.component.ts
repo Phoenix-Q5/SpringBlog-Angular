@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
+  standalone: false,
   selector: 'app-post-tile',
   templateUrl: './post-tile.component.html',
   styleUrls: ['./post-tile.component.css'],

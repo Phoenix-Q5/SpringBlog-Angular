@@ -4,6 +4,7 @@ import { SubredditModel } from 'src/app/subreddit/subreddit-response';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
+  standalone: false,
   selector: 'app-subreddit-side-bar',
   templateUrl: './subreddit-side-bar.component.html',
   styleUrls: ['./subreddit-side-bar.component.css']

@@ -8,6 +8,7 @@ import { throwError } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
+  standalone: false,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

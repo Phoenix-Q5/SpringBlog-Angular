@@ -9,6 +9,7 @@ import { CommentService } from 'src/app/comment/comment.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
+  standalone: false,
   selector: 'app-view-post',
   templateUrl: './view-post.component.html',
   styleUrls: ['./view-post.component.css']

@@ -1,0 +1,18 @@
+services:
+  frontend:
+    build: .
+    image: springblog-angular
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.springblog-frontend.rule=Host(`blog.corevanta.app`)"
+      - "traefik.http.routers.springblog-frontend.entrypoints=web"
+      - "traefik.http.routers.springblog-frontend.service=springblog-frontend"
+      - "traefik.http.services.springblog-frontend.loadbalancer.server.port=8080"
+
+networks:
+  proxy:
+    external: true

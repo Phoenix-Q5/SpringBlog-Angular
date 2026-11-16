@@ -8,7 +8,9 @@ import { throwError } from 'rxjs';
 import { CreatePostPayload } from './create-post.payload';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { ClassicEditor, Essentials, Paragraph, Bold, Italic, Link, List, Heading, BlockQuote, Undo } from 'ckeditor5';
 @Component({
+  standalone: false,
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css']
@@ -18,7 +20,12 @@ export class CreatePostComponent implements OnInit {
   createPostForm: FormGroup;
   postPayload: CreatePostPayload;
   subreddits: Array<SubredditModel>;
-  ckeConfig:any;
+  readonly Editor = ClassicEditor;
+  readonly editorConfig = {
+    licenseKey: 'GPL',
+    plugins: [Essentials, Paragraph, Bold, Italic, Link, List, Heading, BlockQuote, Undo],
+    toolbar: ['undo', 'redo', '|', 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote']
+  };
   constructor(private router: Router, private postService: PostService,
     private subredditService: SubredditService, private spinner: NgxSpinnerService, private toastr:ToastrService) {
     this.postPayload = {

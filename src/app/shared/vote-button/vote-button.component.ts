@@ -10,6 +10,7 @@ import { throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
+  standalone: false,
   selector: 'app-vote-button',
   templateUrl: './vote-button.component.html',
   styleUrls: ['./vote-button.component.css']

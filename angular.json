@@ -18,13 +18,17 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
+            "optimization": false,
+            "buildOptimizer": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ckeditor5/dist/ckeditor5.css",
+              "node_modules/ngx-spinner/animations/ball-spin-clockwise.css",
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/font-awesome/css/font-awesome.css"
@@ -39,10 +43,16 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -66,11 +76,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-reddit-clone:build"
+            "buildTarget": "angular-reddit-clone:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-reddit-clone:build:production"
+              "buildTarget": "angular-reddit-clone:build:production"
             }
           }
         },
@@ -98,34 +108,14 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-reddit-clone:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "angular-reddit-clone:serve:production"
-            }
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
-  "defaultProject": "angular-reddit-clone",
   "cli": {
     "analytics": "4cb92e6a-7b51-47c5-96b2-12398d72bdc9"
   }

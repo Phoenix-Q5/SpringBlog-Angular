@@ -8,6 +8,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
+  standalone: false,
   selector: 'app-create-subreddit',
   templateUrl: './create-subreddit.component.html',
   styleUrls: ['./create-subreddit.component.css']

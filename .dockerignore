@@ -1,0 +1,13 @@
+.git
+.idea
+.vscode
+.angular
+node_modules
+dist
+out-tsc
+coverage
+playwright-report
+test-results
+npm-debug.log*
+Dockerfile
+.dockerignore

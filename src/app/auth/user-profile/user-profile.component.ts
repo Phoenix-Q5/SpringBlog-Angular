@@ -7,6 +7,7 @@ import { CommentPayload } from 'src/app/comment/comment.payload';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
+  standalone: false,
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']

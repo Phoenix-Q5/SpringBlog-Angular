@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
+  standalone: false,
   selector: 'app-list-subreddits',
   templateUrl: './list-subreddits.component.html',
   styleUrls: ['./list-subreddits.component.css']

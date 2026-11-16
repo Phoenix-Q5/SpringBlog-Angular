@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PostModel } from '../shared/post-model';
 import { PostService } from '../shared/post.service';
+import { environment } from '../../environments/environment';
 
 @Component({
+  standalone: false,
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
@@ -11,6 +13,7 @@ import { PostService } from '../shared/post.service';
 export class HomeComponent implements OnInit {
 
   posts: Array<PostModel> = [];
+  readonly urls = environment.urls;
 
   constructor(private postService: PostService, private spinner:NgxSpinnerService) {
     this.spinner.show();

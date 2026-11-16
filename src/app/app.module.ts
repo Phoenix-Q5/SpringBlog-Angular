@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +8,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
-import { NgxWebstorageModule } from 'ngx-webstorage';
+import { provideNgxWebstorage, withLocalStorage } from 'ngx-webstorage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { TokenInterceptor } from './token-interceptor';
@@ -21,12 +21,11 @@ import { SubredditSideBarComponent } from './shared/subreddit-side-bar/subreddit
 import { CreateSubredditComponent } from './subreddit/create-subreddit/create-subreddit.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ListSubredditsComponent } from './subreddit/list-subreddits/list-subreddits.component';
-import { EditorModule } from '@tinymce/tinymce-angular';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ViewPostComponent } from './post/view-post/view-post.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { NgxSpinnerModule } from "ngx-spinner";
-import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   declarations: [
@@ -50,16 +49,16 @@ import { CKEditorModule } from 'ng2-ckeditor';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxWebstorageModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FontAwesomeModule,
-    EditorModule,
-    NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-spin-clockwise', usePopover: false }),
     CKEditorModule,
     NgbModule
   ],
   providers: [
+    provideZoneChangeDetection(),
+    provideNgxWebstorage(withLocalStorage()),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

@@ -3,8 +3,10 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../auth/shared/auth.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { environment } from '../../environments/environment';
 
 @Component({
+  standalone: false,
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
@@ -14,6 +16,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean;
   username: string;
   photo:string;
+  readonly urls = environment.urls;
 
   constructor(private authService: AuthService, private router: Router, private spinner:NgxSpinnerService) { }
 
@@ -23,7 +26,7 @@ export class HeaderComponent implements OnInit {
     this.authService.username.subscribe((data: string) => this.username = data);
     this.isLoggedIn = this.authService.isLoggedIn();
     this.username = this.authService.getUserName();
-    this.photo = "https://ui-avatars.com/api/?name="+this.username;
+    this.photo = `${this.urls.avatar}?name=${this.username}`;
     this.spinner.hide();
   }
 

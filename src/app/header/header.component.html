@@ -2,11 +2,11 @@
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark">
         <div class="flex-grow-1">
             <a aria-label="Home" class="logo" routerLink="/">
-                <img src="https://phoenixaerodrone.files.wordpress.com/2020/09/logo.png">
+                <img [src]="urls.logo">
             </a>
         </div>
-        <div class="flex-grow-1 float-right">
-            <div *ngIf="isLoggedIn" ngbDropdown class="float-right">
+        <div class="flex-grow-1 float-end">
+            <div *ngIf="isLoggedIn" ngbDropdown class="float-end">
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                     <button (click)="goToUserProfile()" ngbDropdownItem>Profile</button>
                     <button (click)="logout()" ngbDropdownItem>Logout</button>
@@ -15,14 +15,14 @@
                       <img class="account-icon" [src]=this.photo>
                     {{username}}
                 </button>
-                <div class="flex-grow-1 float-right">
-                    <a routerLink="/" class="float-left sign-up mr-2">Home</a>
+                <div class="flex-grow-1 float-end">
+                    <a routerLink="/" class="float-start sign-up me-2">Home</a>
                    </div>
             </div>            
             <div *ngIf="!isLoggedIn">
-                <a routerLink="/sign-up" class="float-right sign-up mr-2">Sign up</a>
-                <a routerLink="/login" class="float-right login mr-2">Login</a>
-                <i routerLink="/" class="fa fa-home float-right fa-2x home mr-2"></i>
+                <a routerLink="/sign-up" class="float-end sign-up me-2">Sign up</a>
+                <a routerLink="/login" class="float-end login me-2">Login</a>
+                <i routerLink="/" class="fa fa-home float-end fa-2x home me-2"></i>
             </div>
         </div>
     </nav>
