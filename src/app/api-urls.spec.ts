@@ -38,7 +38,7 @@ describe('configured API URLs', () => {
     const requests: [string, string][] = [
       ['GET', '/posts/'], ['POST', '/posts/'], ['GET', '/posts/1'], ['GET', '/posts/by-user/user'],
       ['GET', '/comments/by-post/1'], ['POST', '/comments/'], ['GET', '/comments/by-user/user'],
-      ['GET', '/category'], ['POST', '/category'], ['POST', '/votes/']
+      ['GET', '/subpost'], ['POST', '/subpost'], ['POST', '/votes/']
     ];
     for (const [method, path] of requests) {
       const request = http.expectOne(req => req.method === method && req.url === `${environment.apiBaseUrl}${path}`);

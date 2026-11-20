@@ -7,7 +7,7 @@ const config = process.env['E2E_PRODUCTION'] === '1' ? productionEnvironment : e
 test.beforeEach(async ({ page }) => {
   await page.route(`${config.apiBaseUrl}/**`, async route => {
     const url = new URL(route.request().url());
-    if (url.pathname === `${new URL(config.apiBaseUrl).pathname}/category`) {
+    if (url.pathname === `${new URL(config.apiBaseUrl).pathname}/subpost`) {
       await route.fulfill({ json: [{ id: 1, name: 'Testing' }] });
     } else {
       await route.fulfill({ json: route.request().method() === 'POST' ? {} : [] });
